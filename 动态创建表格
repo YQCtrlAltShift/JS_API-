@@ -1,0 +1,101 @@
+//动态创建表格---JS API视图
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <meta charset="UTF-8">
+
+    <title>title
+
+        * {
+
+margin:0;
+
+            padding:0;
+
+        }
+
+ul {
+
+list-style-type: none;
+
+            cursor: pointer;
+
+        }
+
+div {
+
+width:200px;
+
+            height:400px;
+
+            border:2px solid red;
+
+        }
+
+<input type="button" value="创建列表" id="btn"/>
+
+<div id="dv">
+
+    function my$(id) {
+
+return document.getElementById(id);
+
+    }
+
+var kungfu = ["降龙十八掌", "黯然销魂掌", "葵花宝典", "九阴真经", "吸星大法", "如来神掌", "化骨绵掌", "玉女心经", "极乐神功", "辟邪剑谱"];
+
+    //点击按钮动态的创建列表,把列表加到div中
+
+    my$("btn").onclick =function () {
+
+//创建ul,把ul立刻加入到父级元素div中
+
+        var ulObj = document.createElement("ul");
+
+        my$("dv").appendChild(ulObj);  // appendChild:添加(ul)事件进去
+
+//动态的创建li,加到ul中
+
+        for (var i =0; i < kungfu.length; i++) {
+
+var liObj = document.createElement("li");
+
+            //设置li中间的文字内容
+
+            liObj.innerHTML = kungfu[i];    // innerHTML属性设置或返回表格行的开始和结束标签之间的HTML
+
+            ulObj.appendChild(liObj);  // appendChild:添加(li)事件进去
+
+//为li添加鼠标进入事件
+
+            liObj.onmouseover =mouseoverHandle;
+
+            //为li添加鼠标离开事件
+
+            liObj.onmouseout =mouseoutHandle;
+
+        }
+
+};
+
+    //此位置.按钮的点击事件的外面
+
+    function mouseoverHandle() {
+
+this.style.backgroundColor ="red";
+
+    }
+
+function mouseoutHandle() {
+
+this.style.backgroundColor ="";
+
+    }
+
+//如果是循环的方式添加事件,推荐用命名函数
+
+//如果不是循环的方式添加事件,推荐使用匿名函数
+
+</html>
