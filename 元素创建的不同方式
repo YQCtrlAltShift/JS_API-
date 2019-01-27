@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 222px;
+            height: 222px;
+            border: 2px solid pink;
+        }
+    </style>
+    <script>
+        /*
+        * 匀速创建 --- 为了提高用户的体验
+        * 元素创建的三种方式：
+        * 1. document.write("标签的代码及内容");
+        * 2. 对象.innerHTML = "标签及代码";
+        * 3. document.createElement("标签的名字");
+        *
+        * */
+    </script>
+</head>
+<body>
+<input type="button" value="第一种方法创建一个p" id="btn"/><br/><br/>
+<script src="common.js"></script>
+<!--//总结：三种创建的方式-->
+<!--// 1.document.write("标签代码及内容"); 如果在页面加载完毕后创建袁术，页面中的内容会被清除掉-->
+<!--// 2.父级元素.innerHTML = "标签代码及内容"; 适合大量的标签嵌套-->
+<!--// 3.document.createElement("标签名字"); 得到的是一个对象，-->
+<!--//   父级元素.appendChild(子级元素对象); -->
+<!--//   父级元素.inerstBefore(新的自己对象，参照的自己对象);-->
+<!--//   移除子元素-->
+<!--//   父级元素.removeChild(要干掉的子级元素对象);-->
+<script>
+    //document.write("标签代码及内容");
+    my$("btn").onclick = function () {
+      document.write("<p>这是一个p标签</p>");
+    };
+//    document.write("<p>这是一个p标签</p>");
+    /*
+    document.write();创建元素，缺陷：如果是在页面加载完毕后，此时通过这种方式
+    创建元素，那么页面上存在的所有的内容全部被干掉
+    */
+</script>
+
+<input type="button" value="第二种方法创建一个p" id="btn2"/><br/><br/>
+<div id="dv"></div>
+<script src="common.js"></script>
+<script>
+    //点击按钮，在div中创建一个p标签
+    //第二种方式创建：对象.innerHTML = "标签代码及内容";
+    my$("btn2").onclick = function () {
+      my$("dv").innerHTML = "<p>娃哈哈 喜之郎 这是一个p标签内容喔！</p>"
+    };
+</script>
+    <!--====================================================================-->
+    <!--小练习-->
+<input type="button" value="小练习之==>想看图片" id="btn3"/>
+<script src="common.js"></script>
+<script>
+    //点击按钮，在div中创建一个图片
+    my$("btn3").onclick = function () {
+      my$("dv").innerHTML = "<img src='img/12.jpg' alt='大熊'/>" ;
+        // ★ 外双引号则内单引号 ； 外单引号则内双引号！！！【在没有变量的情况下】
+    };
+</script>
+
+</body>
+</html>
