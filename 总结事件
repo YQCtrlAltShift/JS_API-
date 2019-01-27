@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #dv1{
+            width: 300px;
+            height: 200px;
+            background-color: red;
+        }
+        #dv2{
+            width: 250px;
+            height: 150px;
+            background-color: green;
+        }
+        #dv3{
+            width: 200px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+<div id="dv1">
+    <div id="dv2">
+        <div id="dv3"></div>
+    </div>
+</div>
+<script src="common.js"></script>
+<script>
+    /*
+    * 1.事件捕获阶段：从外向内
+    * 2.事件目的阶段：最开始选择的那个
+    * 3.事件冒泡阶段：从内向外
+    *
+    * 为元素绑定事件
+    * addEventListener("没有on的事件类型"，事件处理函数，控制事件阶段的);
+    * 事件触发的过程中，可能会出现冒泡的效果，为了阻止事件冒泡有：
+    *   window.event.cancelBubble = true; --->谷歌、IE8支持，火狐不支持
+    *   window.event 就是一个对象，是IE中的标准
+    *   e.stopPropagation(); 阻止事件冒泡 --->谷歌火狐支持，IE8不支持
+    *   window.event 和 e 都是事件参数对象，一个是IE的标准一个是火狐的标准
+    *   事件参数 e 在IE8的浏览器中是不存在，此时用window.event来代替
+    *   addEventListener中第三个参数是控制事件阶段的
+    * 事件阶段有三个：
+    *   通过e.eventPhase这个属性可以知道当前的事件是什么阶段的
+    *   如果这个属性的值是：
+    *       1 ---> 捕获阶段
+    *       2 ---> 目标阶段
+    *       3 ---> 冒泡阶段
+    *   一般默认都是冒泡阶段，很少用捕获阶段
+    *
+    * */
+
+    //同时注册点击事件
+    var objs = [my$("dv3"),my$("dv2"),my$("dv1")];
+    //遍历注册事件
+    objs.forEach(function (ele){
+       //为每个元素绑定事件
+        ele.addEventListener("click", function (e) {
+            console.log(this.id + "===>" + e.eventPhase);
+        },false);   //这里的第三个参数可以为false或true
+    });
+
+
+</script>
+
+</body>
+</html>
