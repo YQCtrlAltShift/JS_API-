@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+
+</head>
+<body>
+<input type="button" value="跳转过去" id="btn1"/>
+<input type="button" value="前进" id="btn2"/>
+<script src="common.js"></script>
+<script>
+    //跳转的
+    my$("btn1").onclick = function () {
+        window.location.href = "11-test.html";  //跳转到指定的页面里
+    };
+    //前进
+    my$("btn2").onclick = function () {
+        window.history.forward();
+    };
+</script>
+</body>
+</html>
+
+
+//另一个页面===================================================================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+
+</head>
+<body>
+<input type="button" value="后退" id="btn"/>
+<script src="common.js"></script>
+<script>
+    //后退
+    my$("btn").onclick = function () {
+        window.history.back();
+    };
+</script>
+
+</body>
+</html>
